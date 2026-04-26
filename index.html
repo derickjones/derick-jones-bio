@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Derick David Jones, MD MBA MS</title>
+  <meta name="description" content="Emergency physician, engineering director, and clinical AI founder at Mayo Clinic." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d1b2a;
+      --teal:   #0d7c66;
+      --teal-lt:#e6f4f1;
+      --slate:  #3d5166;
+      --mid:    #637587;
+      --light:  #f5f7f9;
+      --white:  #ffffff;
+      --border: #d8e0e8;
+      --accent: #c0392b;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--navy);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand { color: var(--white); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.02em; }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.03em; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a52 60%, #0d4f43 100%);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .hero-creds {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      max-width: 680px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.7;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-primary   { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: #0a6555; }
+    .btn-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.22); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 4rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.6rem;
+      line-height: 1.25;
+    }
+
+    /* ── BIO ── */
+    .bio-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--slate);
+      margin-bottom: 1.2rem;
+    }
+    .bio-text p:last-child { margin-bottom: 0; }
+
+    /* ── STAT GRID ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2.4rem;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+    }
+
+    /* ── AI SYSTEMS ── */
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+    .ai-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.3rem;
+    }
+    .ai-card-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.7rem;
+    }
+    .tag-live   { background: #dcf5ee; color: #0a6040; }
+    .tag-deploy { background: #fff3cd; color: #7a5a00; }
+    .tag-validated { background: #e8edf2; color: #3d5166; }
+    .ai-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.45rem; }
+    .ai-card p  { font-size: 0.83rem; color: var(--mid); line-height: 1.55; }
+
+    /* ── SELECTED WORK ── */
+    .work-list { list-style: none; }
+    .work-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .work-item:last-child { border-bottom: none; }
+    .work-year {
+      flex-shrink: 0;
+      width: 48px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--teal);
+      padding-top: 2px;
+    }
+    .work-body strong { font-size: 0.92rem; font-weight: 600; color: var(--navy); display: block; margin-bottom: 0.2rem; }
+    .work-body span { font-size: 0.83rem; color: var(--mid); }
+
+    /* ── AWARDS ── */
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .award-item {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 0.9rem 1.1rem;
+    }
+    .award-item strong { font-size: 0.88rem; font-weight: 600; color: var(--navy); display: block; }
+    .award-item span   { font-size: 0.78rem; color: var(--mid); }
+
+    /* ── LINKS / CONNECT ── */
+    .connect-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .connect-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.2rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--navy);
+      transition: all .2s;
+    }
+    .connect-link:hover { border-color: var(--teal); color: var(--teal); }
+    .connect-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+      section { padding: 2.8rem 0; }
+      .container { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Derick Jones, MD MBA MS</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#ai">AI Systems</a></li>
+    <li><a href="#work">Selected Work</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#connect">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Rochester, MN &nbsp;·&nbsp; Mayo Clinic</p>
+  <h1>Derick David Jones</h1>
+  <p class="hero-creds">MD &nbsp;·&nbsp; MBA &nbsp;·&nbsp; MS (Clinical Informatics)</p>
+  <p class="hero-tagline">
+    Emergency physician, engineering director, and clinical AI founder building healthcare AI products from model development through clinical deployment at Mayo Clinic.
+  </p>
+  <div class="hero-links">
+    <a href="https://emergencymedicine.app" class="btn btn-primary" target="_blank" rel="noopener">
+      emergencymedicine.app ↗
+    </a>
+    <a href="https://www.mayoclinic.org/biographies/jones-derick-d-m-d-m-b-a/bio-20442601" class="btn btn-secondary" target="_blank" rel="noopener">
+      Mayo Clinic Bio ↗
+    </a>
+    <a href="https://www.linkedin.com/in/derick-jones-29714218/" class="btn btn-secondary" target="_blank" rel="noopener">
+      LinkedIn ↗
+    </a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--white);">
+  <div class="container">
+    <p class="section-label">About</p>
+    <h2 class="section-title">Clinician. Engineer. Builder.</h2>
+    <div class="bio-text">
+      <p>
+        I am an emergency physician and Director of ED Data Analytics and Machine Learning at Mayo Clinic, where I lead a cross-functional team building GCP and BigQuery cloud infrastructure and AI systems for one of the busiest and most complex academic emergency departments in the country. Formally trained in clinical informatics since 2019, I have been building AI systems in healthcare since 2022.
+      </p>
+      <p>
+        My work sits at the intersection of clinical practice and engineering. I see patients in the ED, then analyze the data from those same encounters to build models that make the department safer and more efficient. I have built 11 AI systems end-to-end — from data extraction and feature engineering through model development, validation, and deployment — 5 of which are currently in active clinical use.
+      </p>
+      <p>
+        I am also the technical founder of <a href="https://emergencymedicine.app" style="color:var(--teal);font-weight:500;">emergencymedicine.app</a>, a HIPAA-compliant RAG platform built on GCP with Gemini 2.0 Flash, awarded a <strong>$200,000 Mayo Clinic Presidential Strategic Initiative Fund (PSIF) grant</strong> and selected for Mayo Clinic Platform Deploy. I chair Mayo Clinic's enterprise Location Services Solutions Group — a 25+ member cross-functional committee overseeing the largest healthcare RTLS installation in the US — and serve as Physician Chair of the enterprise RTLS RFP ($18.5M).
+      </p>
+      <p>
+        I am board certified in Emergency Medicine (ABEM) and Clinical Informatics (ABPM), hold an MBA from Tuck at Dartmouth, an MD from Geisel at Dartmouth, and an MS in Health Informatics from Northwestern. I have 21 peer-reviewed publications and have delivered 40+ national and international presentations.
+      </p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">11</div>
+        <div class="stat-label">AI systems built end-to-end</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Models in active clinical deployment</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">21</div>
+        <div class="stat-label">Peer-reviewed publications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">National &amp; international presentations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$200K</div>
+        <div class="stat-label">Mayo PSIF grant — emergencymedicine.app</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$18.5M</div>
+        <div class="stat-label">Enterprise RTLS RFP chaired</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI SYSTEMS -->
+<section id="ai">
+  <div class="container">
+    <p class="section-label">AI Systems</p>
+    <h2 class="section-title">11 Systems Built. 5 in Active Clinical Use.</h2>
+
+    <div class="ai-grid">
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-live">Live in Deployment</span>
+        <h3>Emergency Medicine App</h3>
+        <p>HIPAA-compliant RAG platform on GCP. 168 EM protocols. Gemini 2.0 Flash streaming answers with inline citations. Awarded $200K PSIF grant. Selected for Mayo Clinic Platform Deploy.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-live">Live in Deployment</span>
+        <h3>ED Surge Forecasting</h3>
+        <p>XGBoost + DNN predicting census states 4, 8, and 12 hours ahead. Trained on 165,285 encounters. AUC up to 0.91. Live in GCP; integrated with telemedicine dispatch. Best Abstract, Mayo Clinic AI Summit 2025. Published MCP Digital Health, Dec 2025.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-live">Live in Deployment</span>
+        <h3>Admission Prediction</h3>
+        <p>Gradient boosting model with AUC 0.84–0.94 across sites with per-site calibration. Deployed directly in Epic EHR.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-live">Live in Deployment</span>
+        <h3>Waiting Room Deterioration Detection</h3>
+        <p>Two-stage ML + rules-based model flagging ESI-3 patients at risk of sepsis, ICU escalation, or resuscitation before rooming. Live in the emergency medicine viewer.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-live">Live in Deployment</span>
+        <h3>Short LOS / Fast Track Prediction</h3>
+        <p>Gradient boosting identifying patients likely to disposition within 60 min while still in the waiting room. Live in GCP for pod-based rooming and terminal shift optimization.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-deploy">GCP Deployment Setup</span>
+        <h3>GNN ED Bottleneck Detector</h3>
+        <p>Graph Neural Network modeling the ED as a patient-staff-asset graph using live RTLS data. Detects bottlenecks before gridlock. Validated at two sites. Manuscript in revision.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-validated">Validated</span>
+        <h3>ED Billing Level Prediction</h3>
+        <p>NLP + ML ensemble predicting E&M CPT codes from clinical notes. 321,893 encounters. AUC 0.94–0.95. Published Ann Emerg Med 2025. Cited 9 times.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-validated">Validated</span>
+        <h3>UTI and Antibiotic Sensitivity Prediction</h3>
+        <p>XGBoost models for urine culture positivity and antibiotic sensitivity. AUC 0.70–0.93 across 100,000+ encounters. Published Heliyon 2025 and Sci Rep 2025.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-validated">Validated</span>
+        <h3>Geriatric Bounceback Clustering</h3>
+        <p>Unsupervised ML identifying 19 distinct return-visit phenotypes among high-risk older adults. Most Valuable Presentation, WACEM 2024.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-validated">Validated</span>
+        <h3>Lab Draw Forecasting</h3>
+        <p>MultiOutputRegressor with 6 parallel time horizons (+1 to +6 hours). Validated on 80/20 time-ordered split of retrospective BigQuery data.</p>
+      </div>
+
+      <div class="ai-card">
+        <span class="ai-card-tag tag-validated">Validated</span>
+        <h3>NLP Workup Prediction</h3>
+        <p>TF-IDF + tabular ensemble predicting likely orders from triage notes for proactive workup planning. Presented at national conference.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section id="work" style="background: var(--white);">
+  <div class="container">
+    <p class="section-label">Selected Work</p>
+    <h2 class="section-title">Publications, Grants &amp; Recognitions</h2>
+    <ul class="work-list">
+      <li class="work-item">
+        <span class="work-year">2025</span>
+        <div class="work-body">
+          <strong>Artificial Intelligence to Predict Billing Code Levels of Emergency Department Encounters</strong>
+          <span><em>Annals of Emergency Medicine</em> 85(1):63–73 · Cited 9 times · PMID 39320279</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2025</span>
+        <div class="work-body">
+          <strong>ED Surge Forecasting — Published</strong>
+          <span><em>Mayo Clinic Proceedings: Digital Health</em> 3(4), Dec 2025</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2025</span>
+        <div class="work-body">
+          <strong>$200,000 PSIF Award — emergencymedicine.app</strong>
+          <span>Mayo Clinic Presidential Strategic Initiative Fund · Practice-Platform Enablement Award · Selected for Mayo Clinic Platform Deploy</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2025</span>
+        <div class="work-body">
+          <strong>Machine Learning to Predict Bacteriuria and UTI Antibiotic Sensitivity</strong>
+          <span><em>Heliyon</em> 2025 · <em>Scientific Reports</em> 2025 · PMID 40070953, 40851013</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2025</span>
+        <div class="work-body">
+          <strong>Ambient AI vs. Human Scribes in the Emergency Department</strong>
+          <span><em>Annals of Emergency Medicine</em> (Epub ahead of print) · PMID 41251650</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2024</span>
+        <div class="work-body">
+          <strong>Payer Type and Emergency Department Visit Prices</strong>
+          <span><em>JAMA Network Open</em> 7(3):e241297 · PMID 38446484</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2025</span>
+        <div class="work-body">
+          <strong>AI Invention Disclosure — ED Surge Forecasting and Operations Management</strong>
+          <span>Mayo Clinic Invention Disclosure · Filed Jan 2025</span>
+        </div>
+      </li>
+      <li class="work-item">
+        <span class="work-year">2023–28</span>
+        <div class="work-body">
+          <strong>Co-Investigator, FDA Grant FD-05938</strong>
+          <span>Active federal grant · Sep 2023 – Aug 2028</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="container">
+    <p class="section-label">Awards &amp; Recognition</p>
+    <h2 class="section-title">Selected Honors</h2>
+    <div class="award-grid">
+      <div class="award-item">
+        <strong>Best Abstract</strong>
+        <span>Mayo Clinic AI Summit · Jul 2025</span>
+      </div>
+      <div class="award-item">
+        <strong>PSIF Award — $200,000</strong>
+        <span>Mayo Clinic Presidential Strategic Initiative Fund · Jul 2025</span>
+      </div>
+      <div class="award-item">
+        <strong>Award for Research Innovation (Morey Award)</strong>
+        <span>Jun 2025</span>
+      </div>
+      <div class="award-item">
+        <strong>Most Valuable Presentation</strong>
+        <span>WACEM Italy · Nov 2024</span>
+      </div>
+      <div class="award-item">
+        <strong>Top Oral Abstract — MEMC</strong>
+        <span>Journal of Emergency Medicine · Sep 2023</span>
+      </div>
+      <div class="award-item">
+        <strong>Practice Award: Innovation in Digital Care</strong>
+        <span>HIM SAPPHIRE / Foresight Team · Oct 2023</span>
+      </div>
+      <div class="award-item">
+        <strong>MDH Stroke Quality Improvement Award</strong>
+        <span>Minnesota Department of Health · 2020</span>
+      </div>
+      <div class="award-item">
+        <strong>Top-Rated Trainee Poster</strong>
+        <span>Mayo Clinic Quality Conference · Jul 2021</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT -->
+<section id="connect" style="background: var(--white);">
+  <div class="container">
+    <p class="section-label">Connect</p>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="connect-grid">
+
+      <a href="mailto:derickdavidjones@gmail.com" class="connect-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+        derickdavidjones@gmail.com
+      </a>
+
+      <a href="https://www.linkedin.com/in/derick-jones-29714218/" class="connect-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+
+      <a href="https://github.com/derickjones" class="connect-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/derickjones
+      </a>
+
+      <a href="https://emergencymedicine.app" class="connect-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        emergencymedicine.app
+      </a>
+
+      <a href="https://www.mayoclinic.org/biographies/jones-derick-d-m-d-m-b-a/bio-20442601" class="connect-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        Mayo Clinic Bio
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Derick David Jones, MD MBA MS &nbsp;·&nbsp; Mayo Clinic, Rochester MN &nbsp;·&nbsp; April 2026</p>
+</footer>
+
+</body>
+</html>
